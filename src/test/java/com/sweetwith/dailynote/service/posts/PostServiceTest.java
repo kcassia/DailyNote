@@ -1,6 +1,5 @@
 package com.sweetwith.dailynote.service.posts;
 
-import com.sweetwith.dailynote.domain.posts.Post;
 import com.sweetwith.dailynote.domain.posts.PostRepository;
 import com.sweetwith.dailynote.web.dto.PostResponseDto;
 import org.assertj.core.api.Assertions;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
-
 
 import java.util.List;
 import java.util.NoSuchElementException;
