@@ -3,9 +3,9 @@ package com.sweetwith.dailynote.service;
 import com.sweetwith.dailynote.domain.file.File;
 import com.sweetwith.dailynote.domain.file.FileRepository;
 import com.sweetwith.dailynote.web.dto.FileDto;
-import org.apache.tomcat.util.http.fileupload.FileItem;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
-import org.apache.tomcat.util.http.fileupload.disk.DiskFileItem;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItem;
+import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
@@ -80,7 +80,7 @@ public class FileService
             java.io.File ioFile = new java.io.File(file.getFilePath() + "/" + file.getFileName());
             FileItem fileItem = new DiskFileItem(ioFile.getName(), Files.probeContentType(ioFile.toPath()), false, ioFile.getName(), (int) ioFile.length(), ioFile.getParentFile());
             IOUtils.copy(new FileInputStream(ioFile), fileItem.getOutputStream());
-            multipartFile = new CommonsMultipartFile((org.apache.commons.fileupload.FileItem) fileItem);
+            multipartFile = new CommonsMultipartFile(fileItem);
         }
         catch (Exception e)
         {
